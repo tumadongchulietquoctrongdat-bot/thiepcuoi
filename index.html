@@ -426,7 +426,11 @@
 </head>
 <body>
 
-  <audio id="wedding-audio" loop src="https://ia801503.us.archive.org/15/items/ImagineDragonsNatural/Imagine%20Dragons%20-%20Natural.mp3"></audio>
+  <!-- Trỏ về tệp nhac-cuoi.mp3 bạn tải lên Github, có thêm link dự phòng trực tuyến (Beautiful in White) phòng khi file lỗi -->
+  <audio id="wedding-audio" loop>
+    <source src="nhac-cuoi.mp3" type="audio/mpeg">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  </audio>
   <button id="music-control" class="music-btn" title="Bật/Tắt nhạc">🎵</button>
 
   <div class="container">
@@ -577,7 +581,7 @@
           </select>
         </div>
 
-        <!-- Bổ sung câu hỏi về yêu cầu ăn uống/đặc biệt khác -->
+        <!-- Hỏi về yêu cầu ăn uống/yêu cầu đặc biệt khác -->
         <div class="form-group">
           <label for="requests">Yêu cầu đặc biệt khác (ví dụ: ăn chay, dị ứng...)</label>
           <input type="text" id="requests" name="requests" placeholder="Nhập yêu cầu của bạn (nếu có)...">
@@ -607,16 +611,37 @@
     const musicBtn = document.getElementById('music-control');
     let isPlaying = false;
 
-    musicBtn.addEventListener('click', () => {
+    // Hàm bật nhạc
+    function playMusic() {
+      audio.play().then(() => {
+        musicBtn.classList.add('rotating');
+        isPlaying = true;
+        // Hủy tự kích hoạt sau khi đã phát thành công
+        document.removeEventListener('click', autoPlayOnce);
+        document.removeEventListener('touchstart', autoPlayOnce);
+      }).catch(e => console.log("Yêu cầu tương tác của người dùng"));
+    }
+
+    // Sự kiện click thủ công vào nút 🎵
+    musicBtn.addEventListener('click', (e) => {
+      e.stopPropagation(); 
       if (isPlaying) {
         audio.pause();
         musicBtn.classList.remove('rotating');
+        isPlaying = false;
       } else {
-        audio.play().catch(e => console.log("Cần tương tác"));
-        musicBtn.classList.add('rotating');
+        playMusic();
       }
-      isPlaying = !isPlaying;
     });
+
+    // Kích hoạt phát nhạc khi người dùng chạm vào bất kỳ đâu trên màn hình lần đầu tiên
+    function autoPlayOnce() {
+      if (!isPlaying) {
+        playMusic();
+      }
+    }
+    document.addEventListener('click', autoPlayOnce);
+    document.addEventListener('touchstart', autoPlayOnce); 
 
     // Mốc đếm ngược chính xác: 17:30 ngày 19/12/2026
     const weddingDate = new Date("2026-12-19T17:30:00").getTime();
