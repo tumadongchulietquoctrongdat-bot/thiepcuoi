@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lễ Thành Hôn - Trúc Phương & Công Tuấn</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-color: #2b2b2b;
+      --accent-color: #8c6d62;
+      --bg-color: #f5f0eb;
+      --text-color: #333333;
+      --card-bg: #fdfbf9;
+      --font-cursive: 'Alex Brush', cursive;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #eae4dc;
+      color: var(--text-color);
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+      background: var(--card-bg);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .music-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 100;
+      width: 42px;
+      height: 42px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      cursor: pointer;
+      border: none;
+      font-size: 18px;
+    }
+    .rotating {
+      animation: spin 3s linear infinite;
+    }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+
+    /* GALLERY ĐẦU TRANG */
+    .hero-gallery {
+      position: relative;
+      background: #1a1a1a;
+    }
+    .hero-top {
+      position: relative;
+      width: 100%;
+      height: auto;
+      display: block;
+      line-height: 0;
+    }
+    .hero-top img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      image-rendering: -webkit-optimize-contrast;
+    }
+    .hero-top::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40%;
+      background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
+      pointer-events: none;
+    }
+    .overlay-text {
+      position: absolute;
+      bottom: 18px;
+      left: 5%;
+      right: 5%;
+      color: #ffffff;
+      text-align: center;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+      z-index: 2;
+      line-height: 1.2;
+    }
+    .overlay-text .forever {
+      font-family: var(--font-cursive);
+      font-size: 3.2rem;
+      line-height: 0.9;
+      font-weight: normal;
+    }
+    .overlay-text .promise {
+      font-size: 0.72rem;
+      letter-spacing: 4px;
+      font-weight: 500;
+      text-transform: uppercase;
+      margin-top: 5px;
+    }
+
+    .hero-bottom {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding: 10px;
+      background: #111;
+    }
+    .hero-bottom img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      object-position: center;
+      image-rendering: -webkit-optimize-contrast;
+    }
+
+    .content-wrapper {
+      padding: 40px 24px 20px;
+      text-align: center;
+    }
+
+    .family-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-bottom: 35px;
+      font-size: 0.82rem;
+      line-height: 1.6;
+    }
+    .family-title {
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      margin-bottom: 6px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      color: var(--primary-color);
+    }
+    .family-name {
+      color: #4a4a4a;
+    }
+    .family-location {
+      font-style: italic;
+      color: #777;
+      margin-top: 3px;
+      font-size: 0.78rem;
+    }
+
+    .invitation-text {
+      margin-bottom: 35px;
+    }
+    .invitation-text .label {
+      font-size: 0.8rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #777;
+    }
+    .guest-name-box {
+      font-family: var(--font-cursive);
+      font-size: 3.2rem;
+      margin: 5px 0;
+      border-bottom: 1px solid #c8b9aa;
+      display: inline-block;
+      padding: 0 25px 8px;
+      color: var(--accent-color);
+      min-width: 220px;
+    }
+    .invitation-desc {
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #555;
+      margin-top: 14px;
+    }
+
+    .wedding-names-container {
+      position: relative;
+      margin: 45px 0;
+    }
+    .wedding-names h1 {
+      font-family: var(--font-cursive);
+      font-size: 4.6rem;
+      font-weight: normal;
+      color: var(--primary-color);
+      line-height: 1.1;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 35px 0;
+    }
+    .countdown-item {
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid #dfd3c5;
+      padding: 10px 0;
+      border-radius: 6px;
+      min-width: 65px;
+    }
+    .countdown-item span {
+      display: block;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+    .countdown-item label {
+      font-size: 0.65rem;
+      color: #777;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .event-details {
+      margin-bottom: 35px;
+    }
+    .time-top {
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 8px;
+    }
+    .main-date {
+      font-size: 2.2rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      border-top: 1px solid #dfd3c5;
+      border-bottom: 1px solid #dfd3c5;
+      padding: 10px 0;
+    }
+    .venue-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--primary-color);
+      line-height: 1.4;
+      margin-bottom: 5px;
+    }
+    .venue-sub {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      color: var(--accent-color);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .venue-address {
+      font-size: 0.85rem;
+      color: #555;
+      line-height: 1.5;
+    }
+    .btn-map {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 20px;
+      padding: 9px 20px;
+      background: none;
+      border: 1px solid #444;
+      color: var(--primary-color);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: all 0.3s;
+    }
+    .btn-map:hover {
+      background: var(--primary-color);
+      color: #fff;
+    }
+
+    .timeline-section {
+      margin: 40px 0;
+    }
+    .timeline-title {
+      font-family: var(--font-cursive);
+      font-size: 3.6rem;
+      margin-bottom: 25px;
+      color: var(--primary-color);
+    }
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+    }
+    .timeline-item {
+      text-align: center;
+      padding: 5px;
+    }
+    .timeline-icon {
+      width: 38px;
+      height: 38px;
+      margin: 0 auto 10px;
+      opacity: 0.85;
+    }
+    .timeline-time {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 4px;
+    }
+    .timeline-desc {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #666;
+    }
+
+    .dresscode-section {
+      margin: 40px 0 20px;
+      padding: 25px 20px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 8px;
+      border: 1px dashed #cfc2b4;
+    }
+    .dresscode-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+      color: var(--primary-color);
+    }
+    .palette {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .color-circle {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid rgba(0,0,0,0.15);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .dresscode-note {
+      font-size: 0.8rem;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .rsvp-section {
+      background: #ffffff;
+      border-top: 1px solid #e8decb;
+      padding: 40px 24px;
+      margin-top: 20px;
+    }
+    .rsvp-section h2 {
+      font-size: 1.2rem;
+      color: var(--primary-color);
+      margin-bottom: 25px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+    .form-group {
+      margin-bottom: 16px;
+      text-align: left;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      margin-bottom: 6px;
+      color: #555;
+      font-weight: 500;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #d8ccc0;
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      background-color: #fff;
+      outline: none;
+      transition: border 0.3s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--primary-color);
+    }
+    .btn-submit {
+      width: 100%;
+      background: #2b2b2b;
+      color: #fff;
+      padding: 14px;
+      border: none;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-top: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    #form-status {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <audio id="wedding-audio" loop src="https://ia801503.us.archive.org/15/items/ImagineDragonsNatural/Imagine%20Dragons%20-%20Natural.mp3"></audio>
+  <button id="music-control" class="music-btn" title="Bật/Tắt nhạc">🎵</button>
+
+  <div class="container">
+    
+    <!-- GALLERY ĐẦU TRANG -->
+    <div class="hero-gallery">
+      <div class="hero-top">
+        <img src="anh-bia.jpg" alt="Nhẫn cưới Trúc Phương & Công Tuấn" />
+        <div class="overlay-text">
+          <div class="forever">We know, We love</div>
+          <div class="promise">WE LIVE, WE GROW</div>
+        </div>
+      </div>
+      <div class="hero-bottom">
+        <img src="anh-doc-1.jpg" alt="Trúc Phương & Công Tuấn 1" />
+        <img src="anh-doc-2.jpg" alt="Trúc Phương & Công Tuấn 2" />
+      </div>
+    </div>
+
+    <!-- NỘI DUNG THIỆP -->
+    <div class="content-wrapper">
+      
+      <div class="family-section">
+        <div>
+          <div class="family-title">NHÀ TRAI</div>
+          <div class="family-name">Ông. Đinh Văn Kiểm</div>
+          <div class="family-name">Bà. Bùi Thị Xoa</div>
+          <div class="family-location">Tp. HCM, Việt Nam</div>
+        </div>
+        <div>
+          <div class="family-title">NHÀ GÁI</div>
+          <div class="family-name">Ông. Ngô Văn Khiêm</div>
+          <div class="family-name">Bà. Nguyễn Thị Ngọc Hiếu</div>
+          <div class="family-location">Tp. HCM, Việt Nam</div>
+        </div>
+      </div>
+
+      <div class="invitation-text">
+        <div class="label">THÂN MỜI</div>
+        <div class="guest-name-box" id="guest-name">Quý khách</div>
+        <div class="invitation-desc">Đến dự lễ thành hôn của chúng tôi</div>
+      </div>
+
+      <div class="wedding-names-container">
+        <div class="wedding-names">
+          <h1>Trúc Phương</h1>
+          <h1 style="font-size: 3.8rem; line-height: 0.6; margin: 10px 0;">&</h1>
+          <h1>Công Tuấn</h1>
+        </div>
+      </div>
+
+      <!-- Đồng hồ đếm ngược -->
+      <div class="countdown">
+        <div class="countdown-item"><span id="days">00</span><label>Ngày</label></div>
+        <div class="countdown-item"><span id="hours">00</span><label>Giờ</label></div>
+        <div class="countdown-item"><span id="minutes">00</span><label>Phút</label></div>
+        <div class="countdown-item"><span id="seconds">00</span><label>Giây</label></div>
+      </div>
+
+      <!-- Thời gian & Địa điểm -->
+      <div class="event-details">
+        <div class="time-top">VÀO LÚC 17:30, THỨ BẢY</div>
+        <div class="main-date">19.12.2026</div>
+        
+        <div class="venue-name">WHITE PALACE HOÀNG VĂN THỤ</div>
+        <div class="venue-sub">SẢNH DIWA</div>
+        <p class="venue-address">194 Hoàng Văn Thụ, Phường 9, Quận Phú Nhuận,<br>Tp. Hồ Chí Minh</p>
+        
+        <a href="https://share.google/VS10Qz3tavFnYO0rh" target="_blank" class="btn-map">📍 CHỈ ĐƯỜNG GOOGLE MAPS</a>
+      </div>
+
+      <!-- Timeline -->
+      <div class="timeline-section">
+        <div class="timeline-title">Timeline</div>
+        <div class="timeline-grid">
+          <div class="timeline-item">
+            <svg class="timeline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M5 7h1v-1a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v1h1a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2z" />
+              <circle cx="12" cy="13" r="4" />
+            </svg>
+            <div class="timeline-time">17:30</div>
+            <div class="timeline-desc">Đón Khách</div>
+          </div>
+          
+          <div class="timeline-item">
+            <!-- Biểu tượng cặp thiên nga nét mảnh lãng mạn hướng vào nhau tạo hình trái tim -->
+            <svg class="timeline-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M 12 48 C 12 40, 16 34, 22 34 C 23.5 34, 24.5 35, 25 36 C 26 38, 25 40, 24 41.5 C 23 43, 22 45, 21.5 48 C 21 51, 23.5 53, 27 51.5 C 31 49.5, 30.5 41, 32.5 35.5 C 34.5 30, 36.5 25, 34 22.5 C 32.5 21, 31 22, 29.5 24 C 27 27.5, 27 32, 25.5 35 C 24 38, 20.5 40, 16.5 40.5" />
+              <path d="M 15 47 C 15 43.5, 17 41, 21 41 C 20.5 43, 19.5 45.5, 17 47.5" />
+              <path d="M 52 48 C 52 40, 48 34, 42 34 C 40.5 34, 39.5 35, 39 36 C 38 38, 39 40, 40 41.5 C 41 43, 42 45, 42.5 48 C 43 51, 40.5 53, 37 51.5 C 33 49.5, 33.5 41, 31.5 35.5 C 29.5 30, 27.5 25, 30 22.5 C 31.5 21, 33 22, 34.5 24 C 37 27.5, 37 32, 38.5 35 C 40 38, 43.5 40, 47.5 40.5" />
+              <path d="M 49 47 C 49 43.5, 47 41, 43 41 C 43.5 43, 44.5 45.5, 47 47.5" />
+              <path d="M 6 52 C 12 50.5, 18 53.5, 24 52 C 30 50.5, 36 53.5, 42 52 C 48 50.5, 54 53.5, 58 52" />
+              <path d="M 32 30 C 31.5 28.5, 29.5 28.5, 29.5 30 C 29.5 31.5, 32 33.5, 32 33.5 C 32 33.5, 34.5 31.5, 34.5 30 C 34.5 28.5, 32.5 28.5, 32 30 Z" fill="currentColor" opacity="0.3" stroke="none" />
+            </svg>
+            <div class="timeline-time">18:30</div>
+            <div class="timeline-desc">Nghi Lễ</div>
+          </div>
+          
+          <div class="timeline-item">
+            <svg class="timeline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M6 3h12l-2 9H8z" />
+              <path d="M12 12v6" />
+              <path d="M8 18h8" />
+            </svg>
+            <div class="timeline-time">19:00</div>
+            <div class="timeline-desc">Khai Tiệc</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dress Code -->
+      <div class="dresscode-section">
+        <div class="dresscode-title">DRESS CODE TRANG PHỤC</div>
+        <div class="palette">
+          <div class="color-circle" style="background-color: #ffffff;" title="Trắng"></div>
+          <div class="color-circle" style="background-color: #ede2d3;" title="Kem / Beige"></div>
+          <div class="color-circle" style="background-color: #a89481;" title="Nâu Pastel"></div>
+          <div class="color-circle" style="background-color: #2b2b2b;" title="Đen"></div>
+        </div>
+        <p class="dresscode-note">Quý khách vui lòng ưu tiên lựa chọn trang phục theo tone màu gợi ý để những khung hình kỷ niệm thêm trọn vẹn.</p>
+      </div>
+
+    </div>
+
+    <!-- RSVP SECTION -->
+    <section class="rsvp-section">
+      <h2>XÁC NHẬN THAM DỰ</h2>
+      <form id="rsvp-form">
+        <div class="form-group">
+          <label for="form-guest-name">Họ và tên của bạn</label>
+          <input type="text" id="form-guest-name" name="name" required placeholder="Nhập họ tên...">
+        </div>
+
+        <div class="form-group">
+          <label for="status">Khả năng tham dự</label>
+          <select id="status" name="status" required>
+            <option value="Chắc chắn tham dự">Chắc chắn tôi sẽ đến chung vui</option>
+            <option value="Rất tiếc không thể đến">Rất tiếc không thể đến dự</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="pax">Số lượng người tham dự</label>
+          <select id="pax" name="pax">
+            <option value="1">1 người</option>
+            <option value="2">2 người</option>
+            <option value="3+">3 người trở lên</option>
+          </select>
+        </div>
+
+        <!-- Bổ sung câu hỏi về yêu cầu ăn uống/đặc biệt khác -->
+        <div class="form-group">
+          <label for="requests">Yêu cầu đặc biệt khác (ví dụ: ăn chay, dị ứng...)</label>
+          <input type="text" id="requests" name="requests" placeholder="Nhập yêu cầu của bạn (nếu có)...">
+        </div>
+
+        <div class="form-group">
+          <label for="message">Lời chúc gửi Trúc Phương & Công Tuấn</label>
+          <textarea id="message" name="message" rows="3" placeholder="Gửi lời chúc mừng đến cô dâu & chú rể..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit" id="btn-submit">Gửi Xác Nhận</button>
+        <div id="form-status"></div>
+      </form>
+    </section>
+
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestParam = urlParams.get('to');
+    if (guestParam) {
+      document.getElementById('guest-name').innerText = guestParam;
+      document.getElementById('form-guest-name').value = guestParam;
+    }
+
+    const audio = document.getElementById('wedding-audio');
+    const musicBtn = document.getElementById('music-control');
+    let isPlaying = false;
+
+    musicBtn.addEventListener('click', () => {
+      if (isPlaying) {
+        audio.pause();
+        musicBtn.classList.remove('rotating');
+      } else {
+        audio.play().catch(e => console.log("Cần tương tác"));
+        musicBtn.classList.add('rotating');
+      }
+      isPlaying = !isPlaying;
+    });
+
+    // Mốc đếm ngược chính xác: 17:30 ngày 19/12/2026
+    const weddingDate = new Date("2026-12-19T17:30:00").getTime();
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      if (distance > 0) {
+        document.getElementById('days').innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
+        document.getElementById('hours').innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        document.getElementById('minutes').innerText = Math.floor((distance % (1000 * 60)) / (1000 * 60));
+        document.getElementById('seconds').innerText = Math.floor((distance % (1000 * 60)) / 1000);
+      }
+    }, 1000);
+
+    const GOOGLE_SCRIPT_URL = "DÁN_LINK_APPS_SCRIPT_CỦA_BẠN_VÀO_ĐÂY";
+
+    const form = document.getElementById('rsvp-form');
+    const statusText = document.getElementById('form-status');
+    const submitBtn = document.getElementById('btn-submit');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Đang gửi phản hồi...";
+
+      const formData = new FormData(form);
+
+      fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: formData })
+        .then(res => {
+          statusText.style.color = 'green';
+          statusText.innerText = "Cảm ơn bạn đã gửi phản hồi cho chúng tôi!";
+          form.reset();
+        })
+        .catch(err => {
+          statusText.style.color = 'red';
+          statusText.innerText = "Có lỗi xảy ra hoặc chưa gắn link Sheet, vui lòng thử lại!";
+        })
+        .finally(() => {
+          submitBtn.disabled = false;
+          submitBtn.innerText = "Gửi Xác Nhận";
+        });
+    });
+  </script>
+</body>
+</html>
